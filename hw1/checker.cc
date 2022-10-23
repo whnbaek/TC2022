@@ -19,13 +19,21 @@ void get_input(char *filename) {
 
   assert(fscanf(fp, "%d", &k) == 1);
   for (int i = 0; i < k; i++) {
-    assert(fscanf(fp, "%s", pattern[i]) == 1);
+    assert(fgets(pattern[i], LEN_MAX, fp) == pattern[i]);
     len[i] = strlen(pattern[i]);
+    while (pattern[i][len[i] - 1] == '\n') {
+      pattern[i][len[i] - 1] = 0;
+      len[i]--;
+    }
     for (int j = 0; j < len[i]; j++)
       pattern[i][j] -= OFFSET;
   }
-  assert(fscanf(fp, "%s", text) == 1);
+  assert(fgets(text, N_MAX, fp) == text);
   n = strlen(text);
+  while (text[n - 1] == '\n') {
+    text[n - 1] = 0;
+    n--;
+  }
   for (int i = 0; i < n; i++)
     text[i] -= OFFSET;
   assert(fclose(fp) == 0);

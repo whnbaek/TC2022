@@ -47,15 +47,23 @@ void get_input() {
 
   assert(scanf("%d", &k) == 1);
   for (int i = 0; i < k; i++) {
-    assert(scanf("%s", pattern[i]) == 1);
+    assert(fgets(pattern[i], LEN_MAX, stdin) == pattern[i]);
     len[i] = strlen(pattern[i]);
+    while (pattern[i][len[i] - 1] == '\n') {
+      pattern[i][len[i] - 1] = 0;
+      len[i]--;
+    }
     for (int j = 0; j < len[i]; j++)
       pattern[i][j] -= OFFSET;
   }
   assert(scanf("%d", &q) == 1);
   for (int i = 0; i < q; i++) {
-    assert(scanf("%s", text[i]) == 1);
+    assert(fgets(text[i], N_MAX, stdin) == text[i]);
     n[i] = strlen(text[i]);
+    while (text[i][n[i] - 1] == '\n') {
+      text[i][n[i] - 1] = 0;
+      n[i]--;
+    }
     for (int j = 0; j < n[i]; j++)
       text[i][j] -= OFFSET;
   }
