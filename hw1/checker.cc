@@ -17,7 +17,7 @@ void get_input(char *filename) {
   FILE *fp = fopen(filename, "r");
   assert(fp);
 
-  assert(fscanf(fp, "%d", &k) == 1);
+  assert(fscanf(fp, "%d ", &k) == 1);
   for (int i = 0; i < k; i++) {
     assert(fgets(pattern[i], LEN_MAX, fp) == pattern[i]);
     len[i] = strlen(pattern[i]);
@@ -44,7 +44,7 @@ void get_output(char *filename) {
   assert(fp);
 
   for (int i = 0; i < k; i++)
-    assert(fscanf(fp, "%d", &out[i]) == 1);
+    assert(fscanf(fp, "%d ", &out[i]) == 1);
 
   assert(fclose(fp) == 0);
 }

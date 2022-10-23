@@ -45,7 +45,7 @@ void get_input() {
   // FILE *fp = fopen(filename, "r");
   // assert(fp);
 
-  assert(scanf("%d", &k) == 1);
+  assert(scanf("%d ", &k) == 1);
   for (int i = 0; i < k; i++) {
     assert(fgets(pattern[i], LEN_MAX, stdin) == pattern[i]);
     len[i] = strlen(pattern[i]);
@@ -56,7 +56,7 @@ void get_input() {
     for (int j = 0; j < len[i]; j++)
       pattern[i][j] -= OFFSET;
   }
-  assert(scanf("%d", &q) == 1);
+  assert(scanf("%d ", &q) == 1);
   for (int i = 0; i < q; i++) {
     assert(fgets(text[i], N_MAX, stdin) == text[i]);
     n[i] = strlen(text[i]);
