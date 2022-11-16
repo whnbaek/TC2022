@@ -101,10 +101,7 @@ void encode() {
   idx2bit(0L);
 
   // flush last character
-  if (num_bits % 8) {
-    assert(fputc(output, out) == output);
-    cnt++;
-  }
+  assert(fputc(output, out) == output);
 }
 
 void decode() {
